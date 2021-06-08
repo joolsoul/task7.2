@@ -7,29 +7,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0f30c31-7042-41d8-8fa8-a81744b8b657" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/GraphSamples_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/GraphSamples_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/guru_nidi_graphviz_java_0_14_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/guru_nidi_graphviz_java_0_14_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ru/vsu/kudinov_i_m/demo/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/output/ex1.png" beforeDir="false" afterPath="$PROJECT_DIR$/files/output/ex1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/output/ex1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/files/output/ex1.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/output/ex3.png" beforeDir="false" afterPath="$PROJECT_DIR$/files/output/ex3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/output/ex3.svg" beforeDir="false" afterPath="$PROJECT_DIR$/files/output/ex3.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/AdjListsDigraph.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/AdjListsGraph.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/AdjMatrixDigraph.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/AdjMatrixGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/AdjMatrixGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/Digraph.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/GraphAlgorithms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/GraphAlgorithms.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/GraphUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/cs/util/GraphUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/WeightedDigraph.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/WeightedGraph.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/demo/GraphDemoFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/demo/GraphDemoFrame.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/demo/GraphDemoFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/demo/GraphDemoFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/demo/GraphUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/demo/GraphvizExamples.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/util/JTableUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/cs/util/JTableUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/course1/graph/AdjMatrixGraph$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/course1/graph/AdjMatrixGraph$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/course1/graph/AdjMatrixGraph.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/course1/graph/Graph.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/course1/graph/GraphAlgorithms.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/course1/graph/demo/GraphDemoFrame$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/course1/graph/demo/GraphDemoFrame$SvgPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/course1/graph/demo/GraphDemoFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/course1/graph/demo/Program.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/ArrayUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/DrawUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/GraphUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/JTableUtils$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/JTableUtils$1RowHeaderRenderer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/JTableUtils$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/JTableUtils$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/JTableUtils$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/JTableUtils$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/JTableUtils$JTableUtilsException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/JTableUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/SwingUtils$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/SwingUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/dummy/DefaultNotSupportedCollection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/dummy/DefaultNotSupportedMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/dummy/DefaultNotSupportedSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphSamples/ru/vsu/cs/util/dummy/DefaultNotSupportedSortedMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/AdjMatrixGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/kudinov_i_m/AdjacencyMatrixGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/kudinov_i_m/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/GraphAlgorithms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/kudinov_i_m/GraphAlgorithms.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/demo/GraphDemoFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/kudinov_i_m/demo/GraphDemoFrame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/demo/GraphDemoFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/kudinov_i_m/demo/GraphDemoFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/course1/graph/demo/Program.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/util/ArrayUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/kudinov_i_m/utils/ArrayUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/util/DrawUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/kudinov_i_m/utils/DrawUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/util/GraphUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/kudinov_i_m/utils/GraphUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/util/JTableUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/kudinov_i_m/utils/JTableUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/util/SwingUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/kudinov_i_m/utils/SwingUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/util/dummy/DefaultNotSupportedCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/kudinov_i_m/utils/dummy/DefaultNotSupportedCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/util/dummy/DefaultNotSupportedMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/kudinov_i_m/utils/dummy/DefaultNotSupportedMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/util/dummy/DefaultNotSupportedSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/kudinov_i_m/utils/dummy/DefaultNotSupportedSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ru/vsu/cs/util/dummy/DefaultNotSupportedSortedMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ru/vsu/kudinov_i_m/utils/dummy/DefaultNotSupportedSortedMap.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,8 +87,8 @@
     <property name="Repository.Attach.Sources" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="421" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="false" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="282" />
     <property name="last_opened_file_path" value="$USER_HOME$/Лекция 10. Хеш-таблицы/HashSamples" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -83,7 +105,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.course1.graph.demo.Program" />
+      <option name="MAIN_CLASS_NAME" value="ru.vsu.kudinov_i_m.demo.Main" />
       <module name="GraphSamples" />
       <method v="2">
         <option name="Make" enabled="true" />
