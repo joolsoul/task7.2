@@ -8,19 +8,22 @@ import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 
 
-public class DrawUtils {
+public class DrawUtils
+{
     /**
      * Рисование строки в центре прямоугольника (x, y, width, height).
-     * @param gr Экземпляр <code>Graphics</code> для рисования
-     * @param font Шрифт для рисования
-     * @param s Строка, которую надо нарисовать
-     * @param x Координата x верхнего левого угла прямоугольника
-     * @param y Координата y верхнего левого угла прямоугольника
-     * @param width Ширина прямоугольника
+     *
+     * @param gr     Экземпляр <code>Graphics</code> для рисования
+     * @param font   Шрифт для рисования
+     * @param s      Строка, которую надо нарисовать
+     * @param x      Координата x верхнего левого угла прямоугольника
+     * @param y      Координата y верхнего левого угла прямоугольника
+     * @param width  Ширина прямоугольника
      * @param height Высота прямоугольника
      * @see java.awt.Graphics
      */
-    public static void drawStringInCenter(Graphics gr, Font font, String s, int x, int y, int width, int height) {
+    public static void drawStringInCenter(Graphics gr, Font font, String s, int x, int y, int width, int height)
+    {
         FontRenderContext frc = new FontRenderContext(null, true, true);
 
         Rectangle2D r2D = font.getStringBounds(s, frc);
@@ -38,24 +41,28 @@ public class DrawUtils {
 
     /**
      * Рисование строки в центре прямоугольника (x, y, width, height).
-     * @param gr Экземпляр <code>Graphics</code> для рисования
+     *
+     * @param gr   Экземпляр <code>Graphics</code> для рисования
      * @param font Шрифт для рисования
-     * @param s Строка, которую надо нарисовать
-     * @param r Прямоугольник
+     * @param s    Строка, которую надо нарисовать
+     * @param r    Прямоугольник
      * @see java.awt.Graphics
      * @see java.awt.Rectangle
      */
-    public static void drawStringInCenter(Graphics gr, Font font, String s, Rectangle r) {
+    public static void drawStringInCenter(Graphics gr, Font font, String s, Rectangle r)
+    {
         drawStringInCenter(gr, font, s, r.x, r.y, r.width, r.height);
     }
 
 
     /**
      * Возвращает контрастный цвет (белый или черный) к переданному цвету
+     *
      * @param color Цвет
      * @return Контрастный цвет
      */
-    public static Color getContrastColor(Color color) {
+    public static Color getContrastColor(Color color)
+    {
         double y = (299 * color.getRed() + 587 * color.getGreen() + 114 * color.getBlue()) / 1000;
         return y >= 128 ? Color.BLACK : Color.WHITE;
     }

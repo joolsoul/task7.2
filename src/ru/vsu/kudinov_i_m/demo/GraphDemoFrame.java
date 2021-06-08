@@ -16,6 +16,7 @@ import ru.vsu.kudinov_i_m.GraphAlgorithms;
 import ru.vsu.kudinov_i_m.utils.GraphUtils;
 import ru.vsu.kudinov_i_m.utils.JTableUtils;
 import ru.vsu.kudinov_i_m.utils.SwingUtils;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -33,7 +34,7 @@ public class GraphDemoFrame extends JFrame
     private JPanel panelMain;
     private JTextArea textAreaSystemOut;
     private JPanel panelGraphPainterContainer;
-    private JButton createAGraphButton;
+    private JButton createGraphButton;
     private JTable tableArray;
     private JButton clearButton;
     private JButton findEulerCycleButton;
@@ -145,7 +146,7 @@ public class GraphDemoFrame extends JFrame
         panelGraphPainterContainer.add(new JScrollPane(panelGraphPainter));
 
 
-        createAGraphButton.addActionListener(e ->
+        createGraphButton.addActionListener(e ->
         {
             try
             {
@@ -213,7 +214,7 @@ public class GraphDemoFrame extends JFrame
         {
             int[][] clearArray = new int[1][1];
             JTableUtils.writeArrayToJTable(tableArray, clearArray);
-            createAGraphButton.doClick();
+            createGraphButton.doClick();
             textAreaSystemOut.setText(null);
         });
     }
@@ -319,10 +320,10 @@ public class GraphDemoFrame extends JFrame
         panel3.setLayout(new GridLayoutManager(2, 3, new Insets(0, 0, 0, 0), -1, -1));
         panel3.setBackground(new Color(-16756114));
         panel2.add(panel3, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        createAGraphButton = new JButton();
-        createAGraphButton.setBackground(new Color(-2960950));
-        createAGraphButton.setText("Create a graph");
-        panel3.add(createAGraphButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        createGraphButton = new JButton();
+        createGraphButton.setBackground(new Color(-2960950));
+        createGraphButton.setText("Create a graph");
+        panel3.add(createGraphButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         clearButton = new JButton();
         clearButton.setBackground(new Color(-2960950));
         clearButton.setText("Clear");

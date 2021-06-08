@@ -44,10 +44,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
-public class JTableUtils {
+public class JTableUtils
+{
 
-    public static class JTableUtilsException extends ParseException {
-        public JTableUtilsException(String s) {
+    public static class JTableUtilsException extends ParseException
+    {
+        public JTableUtilsException(String s)
+        {
             super(s, 0);
         }
     }
@@ -67,16 +70,20 @@ public class JTableUtils {
 
     private static final NumberFormat defaultNumberFormat = NumberFormat.getInstance(Locale.ROOT);
 
-    private static double parseDouble(String s) throws NumberFormatException {
-        try {
+    private static double parseDouble(String s) throws NumberFormatException
+    {
+        try
+        {
             return defaultNumberFormat.parse(s).doubleValue();
-        } catch (ParseException e) {
+        } catch (ParseException e)
+        {
             throw new NumberFormatException(e.getMessage());
         }
     }
 
 
-    private static <T extends JComponent> T setFixedSize(T comp, int width, int height) {
+    private static <T extends JComponent> T setFixedSize(T comp, int width, int height)
+    {
         Dimension d = new Dimension(width, height);
         comp.setMaximumSize(d);
         comp.setMinimumSize(d);
@@ -85,7 +92,8 @@ public class JTableUtils {
         return comp;
     }
 
-    private static JButton createPlusMinusButton(String text, int size) {
+    private static JButton createPlusMinusButton(String text, int size)
+    {
         JButton button = new JButton(text);
         setFixedSize(button, size, size).setMargin(new Insets(0, 0, 0, 0));
         button.setFocusable(false);
@@ -93,30 +101,38 @@ public class JTableUtils {
         return button;
     }
 
-    private static int getColumnWidth(JTable table) {
+    private static int getColumnWidth(JTable table)
+    {
         Integer columnWidth = tableColumnWidths.get(table);
-        if (columnWidth == null) {
-            if (table.getColumnCount() > 0) {
+        if (columnWidth == null)
+        {
+            if (table.getColumnCount() > 0)
+            {
                 columnWidth = table.getWidth() / table.getColumnCount();
-            } else {
+            } else
+            {
                 columnWidth = DEFAULT_COLUMN_WIDTH;
             }
         }
         return columnWidth;
     }
 
-    private static void recalcJTableSize(JTable table) {
+    private static void recalcJTableSize(JTable table)
+    {
         int width = getColumnWidth(table) * table.getColumnCount();
         int height = 0, rowCount = table.getRowCount();
         for (int r = 0; r < rowCount; r++)
             height += table.getRowHeight(height);
         setFixedSize(table, width, height);
 
-        if (table.getParent() instanceof JViewport && table.getParent().getParent() instanceof JScrollPane) {
+        if (table.getParent() instanceof JViewport && table.getParent().getParent() instanceof JScrollPane)
+        {
             JScrollPane scrollPane = (JScrollPane) table.getParent().getParent();
-            if (scrollPane.getRowHeader() != null) {
+            if (scrollPane.getRowHeader() != null)
+            {
                 Component rowHeaderView = scrollPane.getRowHeader().getView();
-                if (rowHeaderView instanceof JList) {
+                if (rowHeaderView instanceof JList)
+                {
                     ((JList) rowHeaderView).setFixedCellHeight(table.getRowHeight());
                 }
                 scrollPane.getRowHeader().repaint();
@@ -124,9 +140,12 @@ public class JTableUtils {
         }
     }
 
-    private static void addRowHeader(JTable table, TableModel tableModel, JScrollPane scrollPane) {
-        final class RowHeaderRenderer extends JLabel implements ListCellRenderer {
-            RowHeaderRenderer() {
+    private static void addRowHeader(JTable table, TableModel tableModel, JScrollPane scrollPane)
+    {
+        final class RowHeaderRenderer extends JLabel implements ListCellRenderer
+        {
+            RowHeaderRenderer()
+            {
                 JTableHeader header = table.getTableHeader();
                 setOpaque(true);
                 setBorder(UIManager.getBorder("TableHeader.cellBorder"));
@@ -138,20 +157,24 @@ public class JTableUtils {
 
             @Override
             public Component getListCellRendererComponent(JList list,
-                                                          Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                                                          Object value, int index, boolean isSelected, boolean cellHasFocus)
+            {
                 setText(String.format("[%d]", index));
                 return this;
             }
         }
 
-        ListModel lm = new AbstractListModel() {
+        ListModel lm = new AbstractListModel()
+        {
             @Override
-            public int getSize() {
+            public int getSize()
+            {
                 return tableModel.getRowCount();
             }
 
             @Override
-            public Object getElementAt(int index) {
+            public Object getElementAt(int index)
+            {
                 return String.format("[%d]", index);
             }
         };
@@ -195,7 +218,8 @@ public class JTableUtils {
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         table.getTableHeader().setReorderingAllowed(false);
         table.getTableHeader().setResizingAllowed(false);
-        if (!showColsIndexes && table.getTableHeader() != null) {
+        if (!showColsIndexes && table.getTableHeader() != null)
+        {
             table.getTableHeader().setPreferredSize(new Dimension(0, 0));
         }
         table.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -206,9 +230,11 @@ public class JTableUtils {
         //table.setCursor(Cursor.getDefaultCursor());
         table.putClientProperty("terminateEditOnFocusLost", true);
 
-        DefaultTableModel tableModel = new DefaultTableModel(new String[]{"[0]"}, 1) {
+        DefaultTableModel tableModel = new DefaultTableModel(new String[]{"[0]"}, 1)
+        {
             @Override
-            public String getColumnName(int index) {
+            public String getColumnName(int index)
+            {
                 return String.format("[%d]", index);
             }
         };
@@ -216,9 +242,11 @@ public class JTableUtils {
         tableColumnWidths.put(table, defaultColWidth);
         recalcJTableSize(table);
 
-        if (table.getParent() instanceof JViewport && table.getParent().getParent() instanceof JScrollPane) {
+        if (table.getParent() instanceof JViewport && table.getParent().getParent() instanceof JScrollPane)
+        {
             JScrollPane scrollPane = (JScrollPane) table.getParent().getParent();
-            if (changeRowsCountButtons || changeColsCountButtons) {
+            if (changeRowsCountButtons || changeColsCountButtons)
+            {
                 List<Component> linkedComponents = new ArrayList<>();
 
                 scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -230,16 +258,19 @@ public class JTableUtils {
                 JPanel panel = new JPanel(borderLayout);
                 panel.setBackground(TRANSPARENT);
 
-                if (changeColsCountButtons) {
+                if (changeColsCountButtons)
+                {
                     JPanel topPanel = new JPanel(flowLayout);
                     topPanel.setBackground(TRANSPARENT);
-                    if (changeRowsCountButtons) {
+                    if (changeRowsCountButtons)
+                    {
                         topPanel.add(setFixedSize(new Box.Filler(null, null, null), changeButtonsSize + changeButtonsMargin, changeButtonsSize));
                     }
                     minusColumnButton.setName(table.getName() + "-minusColumnButton");
                     minusColumnButton.addActionListener((ActionEvent evt) ->
                     {
-                        if (tableModel.getRowCount() > 0) {
+                        if (tableModel.getRowCount() > 0)
+                        {
                             tableModel.removeRow(tableModel.getRowCount() - 1);
                             recalcJTableSize(table);
                             tableModel.setColumnCount(tableModel.getColumnCount() > 0 ? tableModel.getColumnCount() - 1 : 0);
@@ -263,12 +294,15 @@ public class JTableUtils {
 
                     panel.add(topPanel, BorderLayout.NORTH);
                 }
-                if (changeRowsCountButtons) {
+                if (changeRowsCountButtons)
+                {
                     JPanel leftPanel = setFixedSize(new JPanel(flowLayout), changeButtonsSize, changeButtonsSize);
                     leftPanel.setBackground(TRANSPARENT);
                     minusRowButton.setName(table.getName() + "-minusRowButton");
-                    minusRowButton.addActionListener((ActionEvent evt) -> {
-                        if (tableModel.getRowCount() > 0) {
+                    minusRowButton.addActionListener((ActionEvent evt) ->
+                    {
+                        if (tableModel.getRowCount() > 0)
+                        {
                             tableModel.removeRow(tableModel.getRowCount() - 1);
                             recalcJTableSize(table);
 
@@ -278,7 +312,8 @@ public class JTableUtils {
                     linkedComponents.add(minusRowButton);
                     leftPanel.add(setFixedSize(new Box.Filler(null, null, null), changeButtonsSize, changeButtonsMargin));
                     plusRowButton.setName(table.getName() + "-plusRowButton");
-                    plusRowButton.addActionListener((ActionEvent evt) -> {
+                    plusRowButton.addActionListener((ActionEvent evt) ->
+                    {
                         tableModel.setRowCount(tableModel.getRowCount() + 1);
                         recalcJTableSize(table);
 
@@ -301,11 +336,14 @@ public class JTableUtils {
 
                 // привязываем обработчик событий, который активирует и дективирует зависимые
                 // компоненты (кнопки) в зависимости от состояния table
-                table.addPropertyChangeListener((PropertyChangeEvent evt) -> {
-                    if ("enabled".equals(evt.getPropertyName())) {
+                table.addPropertyChangeListener((PropertyChangeEvent evt) ->
+                {
+                    if ("enabled".equals(evt.getPropertyName()))
+                    {
                         boolean enabled = (boolean) evt.getNewValue();
                         linkedComponents.forEach((comp) -> comp.setEnabled(enabled));
-                        if (!enabled) {
+                        if (!enabled)
+                        {
                             table.clearSelection();
                         }
                     }
@@ -321,24 +359,33 @@ public class JTableUtils {
 
             // привязываем отбработчик событий, который снимает выделение,
             // а также обработчик событий, который будет изменять размер таблицы при изменении высоты строки
-            table.addPropertyChangeListener((PropertyChangeEvent evt) -> {
-                if ("enabled".equals(evt.getPropertyName())) {
+            table.addPropertyChangeListener((PropertyChangeEvent evt) ->
+            {
+                if ("enabled".equals(evt.getPropertyName()))
+                {
                     boolean enabled = (boolean) evt.getNewValue();
-                    if (!enabled) {
+                    if (!enabled)
+                    {
                         table.clearSelection();
                     }
-                } else if ("rowHeight".equals(evt.getPropertyName())) {
+                } else if ("rowHeight".equals(evt.getPropertyName()))
+                {
                     recalcJTableSize(table);
                 }
             });
 
             // привязываем обработчик событий, который очищает выделенные ячейки по клавише delete
-            table.addKeyListener(new KeyAdapter() {
+            table.addKeyListener(new KeyAdapter()
+            {
                 @Override
-                public void keyPressed(KeyEvent evt) {
-                    if (evt.getKeyChar() == DELETE_KEY_CHAR_CODE) {
-                        for (int r : table.getSelectedRows()) {
-                            for (int c : table.getSelectedColumns()) {
+                public void keyPressed(KeyEvent evt)
+                {
+                    if (evt.getKeyChar() == DELETE_KEY_CHAR_CODE)
+                    {
+                        for (int r : table.getSelectedRows())
+                        {
+                            for (int c : table.getSelectedColumns())
+                            {
                                 table.setValueAt(null, r, c);
                             }
                         }
@@ -348,11 +395,14 @@ public class JTableUtils {
 
             // устанавливаем CellRenderer, который меняет выравнивание в ячейках в зависимости
             // от содержимого (целые числа - выравнивание вправо, иначе - влево) + красивые отступы
-            table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer()
+            {
                 @Override
-                public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+                {
                     Component comp = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                    if (comp instanceof JLabel) {
+                    if (comp instanceof JLabel)
+                    {
                         JLabel label = (JLabel) comp;
                         label.setHorizontalAlignment((value == null || value.toString().matches("|-?\\d+")) ? RIGHT : LEFT);
                         label.setBorder(DEFAULT_RENDERER_CELL_BORDER);
@@ -362,11 +412,14 @@ public class JTableUtils {
             });
             // устанавливаем CellEditor, который меняет выравнивание в ячейках в зависимости
             // от содержимого (целые числа - выравнивание вправо, иначе - влево) + красивые отступы
-            table.setDefaultEditor(Object.class, new DefaultCellEditor(new JTextField()) {
+            table.setDefaultEditor(Object.class, new DefaultCellEditor(new JTextField())
+            {
                 @Override
-                public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+                public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
+                {
                     Component comp = super.getTableCellEditorComponent(table, value, isSelected, row, column);
-                    if (comp instanceof JTextField) {
+                    if (comp instanceof JTextField)
+                    {
                         JTextField textField = (JTextField) comp;
                         textField.setHorizontalAlignment((value == null || value.toString().matches("|-?\\d+")) ? SwingConstants.RIGHT : SwingConstants.LEFT);
                         textField.setBorder(DEFAULT_EDITOR_CELL_BORDER);
@@ -376,7 +429,8 @@ public class JTableUtils {
                 }
             });
 
-            if (showRowsIndexes) {
+            if (showRowsIndexes)
+            {
                 addRowHeader(table, tableModel, scrollPane);
             }
         }
@@ -393,7 +447,8 @@ public class JTableUtils {
             JTable table, int defaultColWidth,
             boolean showRowsIndexes, boolean showColsIndexes,
             boolean changeRowsCountButtons, boolean changeColsCountButtons
-    ) {
+    )
+    {
         initJTableForArray(
                 table, defaultColWidth,
                 showRowsIndexes, showColsIndexes, changeRowsCountButtons, changeColsCountButtons,
@@ -410,8 +465,10 @@ public class JTableUtils {
      * @param rowHeight   высота строки (меньше или равно 0 - не менять)
      * @param columnWidth ширина столбца (меньше или равно 0 - не менять)
      */
-    public static void resizeJTable(JTable table, int rowCount, int colCount, int rowHeight, int columnWidth) {
-        if (!(table.getModel() instanceof DefaultTableModel)) {
+    public static void resizeJTable(JTable table, int rowCount, int colCount, int rowHeight, int columnWidth)
+    {
+        if (!(table.getModel() instanceof DefaultTableModel))
+        {
             return;
         }
         DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
@@ -430,7 +487,8 @@ public class JTableUtils {
      * @param rowCount новое кол-во строк
      * @param colCount новое кол-во столбцов
      */
-    public static void resizeJTable(JTable table, int rowCount, int colCount) {
+    public static void resizeJTable(JTable table, int rowCount, int colCount)
+    {
         resizeJTable(table, rowCount, colCount, -1, -1);
     }
 
@@ -441,7 +499,8 @@ public class JTableUtils {
      * @param rowHeight   высота строки
      * @param columnWidth ширина столбца
      */
-    public static void resizeJTableCells(JTable table, int rowHeight, int columnWidth) {
+    public static void resizeJTableCells(JTable table, int rowHeight, int columnWidth)
+    {
         resizeJTable(table, -1, -1, rowHeight, columnWidth);
     }
 
@@ -450,12 +509,16 @@ public class JTableUtils {
      *
      * @param width Ширина
      */
-    public static void setRowsHeaderColumnWidth(JTable table, int width) {
-        if (table.getParent() instanceof JViewport && table.getParent().getParent() instanceof JScrollPane) {
+    public static void setRowsHeaderColumnWidth(JTable table, int width)
+    {
+        if (table.getParent() instanceof JViewport && table.getParent().getParent() instanceof JScrollPane)
+        {
             JScrollPane scrollPane = (JScrollPane) table.getParent().getParent();
-            if (scrollPane.getRowHeader() != null) {
+            if (scrollPane.getRowHeader() != null)
+            {
                 Component rowHeaderView = scrollPane.getRowHeader().getView();
-                if (rowHeaderView instanceof JList) {
+                if (rowHeaderView instanceof JList)
+                {
                     ((JList) rowHeaderView).setFixedCellWidth(width);
                 }
                 scrollPane.getRowHeader().repaint();
@@ -467,26 +530,33 @@ public class JTableUtils {
      * Запись данных из массива (одномерного или двухмерного) в JTable
      * (основная реализация, закрытый метод, используется в остальных writeArrayToJTable)
      */
-    private static void writeArrayToJTable(JTable table, Object array, String itemFormat) {
-        if (!array.getClass().isArray()) {
+    private static void writeArrayToJTable(JTable table, Object array, String itemFormat)
+    {
+        if (!array.getClass().isArray())
+        {
             return;
         }
-        if (!(table.getModel() instanceof DefaultTableModel)) {
+        if (!(table.getModel() instanceof DefaultTableModel))
+        {
             return;
         }
         DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 
         tableColumnWidths.put(table, getColumnWidth(table));
 
-        if (itemFormat == null || itemFormat.length() == 0) {
+        if (itemFormat == null || itemFormat.length() == 0)
+        {
             itemFormat = "%s";
         }
         int rank = 1;
         int len1 = Array.getLength(array), len2 = -1;
-        if (len1 > 0) {
-            for (int i = 0; i < len1; i++) {
+        if (len1 > 0)
+        {
+            for (int i = 0; i < len1; i++)
+            {
                 Object item = Array.get(array, i);
-                if (item != null && item.getClass().isArray()) {
+                if (item != null && item.getClass().isArray())
+                {
                     rank = 2;
                     len2 = Math.max(Array.getLength(item), len2);
                 }
@@ -494,18 +564,25 @@ public class JTableUtils {
         }
         tableModel.setRowCount(rank == 1 ? 1 : len1);
         tableModel.setColumnCount(rank == 1 ? len1 : len2);
-        for (int i = 0; i < len1; i++) {
-            if (rank == 1) {
+        for (int i = 0; i < len1; i++)
+        {
+            if (rank == 1)
+            {
                 tableModel.setValueAt(String.format(itemFormat, Array.get(array, i)), 0, i);
-            } else {
+            } else
+            {
                 Object line = Array.get(array, i);
-                if (line != null) {
-                    if (line.getClass().isArray()) {
+                if (line != null)
+                {
+                    if (line.getClass().isArray())
+                    {
                         int lineLen = Array.getLength(line);
-                        for (int j = 0; j < lineLen; j++) {
+                        for (int j = 0; j < lineLen; j++)
+                        {
                             tableModel.setValueAt(String.format(itemFormat, Array.get(line, j)), i, j);
                         }
-                    } else {
+                    } else
+                    {
                         tableModel.setValueAt(String.format(itemFormat, Array.get(array, i)), 0, i);
                     }
                 }
@@ -518,7 +595,8 @@ public class JTableUtils {
      * Запись данных из массива int[] в JTable
      * (основная реализация, закрытый метод, используется в ArrayToGrid и Array2ToGrid)
      */
-    public static void writeArrayToJTable(JTable table, int[] array) {
+    public static void writeArrayToJTable(JTable table, int[] array)
+    {
         writeArrayToJTable(table, array, "%d");
     }
 
@@ -526,7 +604,8 @@ public class JTableUtils {
      * Запись данных из массива int[][] в JTable
      * (основная реализация, закрытый метод, используется в ArrayToGrid и Array2ToGrid)
      */
-    public static void writeArrayToJTable(JTable table, int[][] array) {
+    public static void writeArrayToJTable(JTable table, int[][] array)
+    {
         writeArrayToJTable(table, array, "%d");
     }
 
@@ -534,7 +613,8 @@ public class JTableUtils {
      * Запись данных из массива double[] в JTable
      * (основная реализация, закрытый метод, используется в ArrayToGrid и Array2ToGrid)
      */
-    public static void writeArrayToJTable(JTable table, double[] array, String itemFormat) {
+    public static void writeArrayToJTable(JTable table, double[] array, String itemFormat)
+    {
         writeArrayToJTable(table, (Object) array, itemFormat);
     }
 
@@ -542,7 +622,8 @@ public class JTableUtils {
      * Запись данных из массива double[] в JTable
      * (основная реализация, закрытый метод, используется в ArrayToGrid и Array2ToGrid)
      */
-    public static void writeArrayToJTable(JTable table, double[] array) {
+    public static void writeArrayToJTable(JTable table, double[] array)
+    {
         writeArrayToJTable(table, array, "%f");
     }
 
@@ -550,7 +631,8 @@ public class JTableUtils {
      * Запись данных из массива double[][] в JTable
      * (основная реализация, закрытый метод, используется в ArrayToGrid и Array2ToGrid)
      */
-    public static void writeArrayToJTable(JTable table, double[][] array, String itemFormat) {
+    public static void writeArrayToJTable(JTable table, double[][] array, String itemFormat)
+    {
         writeArrayToJTable(table, (Object) array, itemFormat);
     }
 
@@ -558,7 +640,8 @@ public class JTableUtils {
      * Запись данных из массива double[] в JTable
      * (основная реализация, закрытый метод, используется в ArrayToGrid и Array2ToGrid)
      */
-    public static void writeArrayToJTable(JTable table, double[][] array) {
+    public static void writeArrayToJTable(JTable table, double[][] array)
+    {
         writeArrayToJTable(table, array, "%f");
     }
 
@@ -566,7 +649,8 @@ public class JTableUtils {
      * Запись данных из массива String[] в JTable
      * (основная реализация, закрытый метод, используется в ArrayToGrid и Array2ToGrid)
      */
-    public static void writeArrayToJTable(JTable table, String[] array) {
+    public static void writeArrayToJTable(JTable table, String[] array)
+    {
         writeArrayToJTable(table, array, "%s");
     }
 
@@ -574,7 +658,8 @@ public class JTableUtils {
      * Запись данных из массива String[][] в JTable
      * (основная реализация, закрытый метод, используется в ArrayToGrid и Array2ToGrid)
      */
-    public static void writeArrayToJTable(JTable table, String[][] array) {
+    public static void writeArrayToJTable(JTable table, String[][] array)
+    {
         writeArrayToJTable(table, array, "%s");
     }
 
@@ -585,21 +670,28 @@ public class JTableUtils {
     public static <T> T[][] readMatrixFromJTable(
             JTable table, Class<T> clazz, Function<String, ? extends T> converter,
             boolean errorIfEmptyCell, T emptyCellValue
-    ) throws JTableUtilsException {
+    ) throws JTableUtilsException
+    {
         TableModel tableModel = table.getModel();
         int rowCount = tableModel.getRowCount(), colCount = tableModel.getColumnCount();
         T[][] matrix = (T[][]) Array.newInstance(clazz, rowCount, colCount);
-        for (int r = 0; r < rowCount; r++) {
-            for (int c = 0; c < colCount; c++) {
+        for (int r = 0; r < rowCount; r++)
+        {
+            for (int c = 0; c < colCount; c++)
+            {
                 T value = null;
                 Object obj = tableModel.getValueAt(r, c);
-                if (obj == null || obj instanceof String && ((String) obj).trim().length() == 0) {
-                    if (errorIfEmptyCell) {
+                if (obj == null || obj instanceof String && ((String) obj).trim().length() == 0)
+                {
+                    if (errorIfEmptyCell)
+                    {
                         throw new JTableUtilsException(String.format("Empty value on (%d, %d) cell", r, c));
-                    } else {
+                    } else
+                    {
                         value = emptyCellValue;
                     }
-                } else {
+                } else
+                {
                     value = converter.apply(obj.toString());
                 }
                 matrix[r][c] = value;
@@ -613,10 +705,13 @@ public class JTableUtils {
      */
     public static <T> T[][] readMatrixFromJTable(
             JTable table, Class<T> clazz, Function<String, ? extends T> converter, T emptyCellValue
-    ) {
-        try {
+    )
+    {
+        try
+        {
             return readMatrixFromJTable(table, clazz, converter, false, emptyCellValue);
-        } catch (JTableUtilsException impossible) {
+        } catch (JTableUtilsException impossible)
+        {
         }
         return null;
     }
@@ -626,7 +721,8 @@ public class JTableUtils {
      */
     public static <T> T[][] readMatrixFromJTable(
             JTable table, Class<T> clazz, Function<String, ? extends T> converter
-    ) throws JTableUtilsException {
+    ) throws JTableUtilsException
+    {
         return readMatrixFromJTable(table, clazz, converter, true, null);
     }
 
@@ -636,7 +732,8 @@ public class JTableUtils {
     public static <T> T[] readArrayFromJTable(
             JTable table, Class<T> clazz, Function<String, ? extends T> converter,
             boolean errorIfEmptyCell, T emptyCellValue
-    ) throws JTableUtilsException {
+    ) throws JTableUtilsException
+    {
         T[][] matrix = readMatrixFromJTable(table, clazz, converter, errorIfEmptyCell, emptyCellValue);
         return matrix[0];
     }
@@ -646,10 +743,13 @@ public class JTableUtils {
      */
     public static <T> T[] readArrayFromJTable(
             JTable table, Class<T> clazz, Function<String, ? extends T> converter, T emptyCellValue
-    ) {
-        try {
+    )
+    {
+        try
+        {
             return readArrayFromJTable(table, clazz, converter, false, emptyCellValue);
-        } catch (JTableUtilsException impossible) {
+        } catch (JTableUtilsException impossible)
+        {
         }
         return null;
     }
@@ -659,34 +759,36 @@ public class JTableUtils {
      */
     public static <T> T[] readArrayFromJTable(
             JTable table, Class<T> clazz, Function<String, ? extends T> converter
-    ) throws JTableUtilsException {
+    ) throws JTableUtilsException
+    {
         return readArrayFromJTable(table, clazz, converter, true, null);
     }
 
     /**
      * Чтение данных из JTable в двухмерный массив Integer[][]
      */
-    public static boolean[][] readIntMatrixFromJTable(JTable table) throws ParseException {
-        try {
+    public static boolean[][] readIntMatrixFromJTable(JTable table) throws ParseException
+    {
+        try
+        {
             Integer[][] matrix = readMatrixFromJTable(table, Integer.class, Integer::parseInt, false, 0);
             boolean[][] arr = new boolean[matrix.length][matrix.length];
             for (int i = 0; i < matrix.length; i++)
             {
-                for(int j = 0; j < matrix[i].length; j++)
+                for (int j = 0; j < matrix[i].length; j++)
                 {
-                    if(matrix[i][j] == 1)
+                    if (matrix[i][j] == 1)
                     {
                         arr[i][j] = true;
-                    }
-                    else
+                    } else
                     {
                         arr[i][j] = false;
                     }
                 }
             }
             return arr;
-        }
-        catch (JTableUtilsException impossible) {
+        } catch (JTableUtilsException impossible)
+        {
         }
         return null;
     }
@@ -694,10 +796,13 @@ public class JTableUtils {
     /**
      * Чтение данных из JTable в одномерный массив String[]
      */
-    public static int[] readIntArrayFromJTable(JTable table) throws ParseException {
-        try {
+    public static int[] readIntArrayFromJTable(JTable table) throws ParseException
+    {
+        try
+        {
             return ArrayUtils.toPrimitive(readArrayFromJTable(table, Integer.class, Integer::parseInt, false, 0));
-        } catch (JTableUtilsException impossible) {
+        } catch (JTableUtilsException impossible)
+        {
         }
         return null;
     }
@@ -705,11 +810,14 @@ public class JTableUtils {
     /**
      * Чтение данных из JTable в двухмерный массив Integer[][]
      */
-    public static double[][] readDoubleMatrixFromJTable(JTable table) throws ParseException {
-        try {
+    public static double[][] readDoubleMatrixFromJTable(JTable table) throws ParseException
+    {
+        try
+        {
             Double[][] matrix = readMatrixFromJTable(table, Double.class, JTableUtils::parseDouble, false, 0.0);
             return (double[][]) Arrays.stream(matrix).map(ArrayUtils::toPrimitive).toArray((n) -> new double[n][]);
-        } catch (JTableUtilsException impossible) {
+        } catch (JTableUtilsException impossible)
+        {
         }
         return null;
     }
@@ -717,10 +825,13 @@ public class JTableUtils {
     /**
      * Чтение данных из JTable в одномерный массив Integer[]
      */
-    public static double[] readDoubleArrayFromJTable(JTable table) throws ParseException {
-        try {
+    public static double[] readDoubleArrayFromJTable(JTable table) throws ParseException
+    {
+        try
+        {
             return ArrayUtils.toPrimitive(readArrayFromJTable(table, Double.class, JTableUtils::parseDouble, false, 0.0));
-        } catch (JTableUtilsException impossible) {
+        } catch (JTableUtilsException impossible)
+        {
         }
         return null;
     }
@@ -728,10 +839,13 @@ public class JTableUtils {
     /**
      * Чтение данных из JTable в двухмерный массив String[][]
      */
-    public static String[][] readStringMatrixFromJTable(JTable table) {
-        try {
+    public static String[][] readStringMatrixFromJTable(JTable table)
+    {
+        try
+        {
             return readMatrixFromJTable(table, String.class, (s) -> s, false, "");
-        } catch (JTableUtilsException impossible) {
+        } catch (JTableUtilsException impossible)
+        {
         }
         return null;
     }
@@ -739,10 +853,13 @@ public class JTableUtils {
     /**
      * Чтение данных из JTable в одномерный массив String[]
      */
-    public static String[] readStringArrayFromJTable(JTable table) {
-        try {
+    public static String[] readStringArrayFromJTable(JTable table)
+    {
+        try
+        {
             return readArrayFromJTable(table, String.class, (s) -> s, false, "");
-        } catch (JTableUtilsException impossible) {
+        } catch (JTableUtilsException impossible)
+        {
         }
         return null;
     }

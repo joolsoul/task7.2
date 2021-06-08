@@ -2,7 +2,6 @@ package ru.vsu.kudinov_i_m;
 
 public interface Graph
 {
-
     int vertexCount();
 
     int edgeCount();

@@ -15,13 +15,16 @@ public class Main
         UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
         SwingUtils.setDefaultFont("Arial", 20);
 
-        EventQueue.invokeLater(() -> {
-            try {
+        EventQueue.invokeLater(() ->
+        {
+            try
+            {
                 JFrame mainFrame = new GraphDemoFrame();
                 mainFrame.setVisible(true);
                 mainFrame.setSize(1190, 900);
                 mainFrame.setLocationRelativeTo(null);
-            } catch (Exception ex) {
+            } catch (Exception ex)
+            {
                 SwingUtils.showErrorMessageBox(ex);
             }
         });
